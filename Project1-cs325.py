@@ -43,9 +43,8 @@ def array2_mm(arry):
 
 
 ## using the read to array now located in printArray to get a file and push all the arrays through the functions
+## printArray gets the function read_to_array, which generates arrays from arrays in the file
+## loops over them and fires them into array_2
 for fArrays in printArray.read_to_array("","testproblems1.txt"):
 
     array2_mm(fArrays)
-
-
-#print sum(some_array, 0)
