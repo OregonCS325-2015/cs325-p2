@@ -1,6 +1,5 @@
 __author__ = 'Robert Jackson, michael Hoppes'
 import functools
-import xdrlib
 # ARRAY TWO
 #@Params
 #Array of numbers
