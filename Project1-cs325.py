@@ -1,6 +1,6 @@
 __author__ = 'Robert Jackson'
 import functools
-
+import xdrlib
 # ARRAY TWO
 #@Params
 #Array of numbers
@@ -30,7 +30,7 @@ def array2_mm(arry):
                     min_i = i   # reset the indicators
                     max_i = n
                     biggest =  min_v
-
+    #todo get rid of spaces
     print '[',
     for i in range(min_i, max_i + 1):
         print arry[i],
@@ -39,9 +39,33 @@ def array2_mm(arry):
     print ']'
     print biggest
 
+#read a file
+# convert each line to an array or integers
+# returns an array of arrays of integers
+#@params loc = location, name = file name
+
+def read_to_array(loc, name):
+    result = []
+    f = open(loc+name, 'r')
+    for line in f:
+        # get rid of junk
+        # for some reason makes me use equal...not sure that's right but works
+        line=  line.replace('[', '')
+        line = line.replace(']', '')
+        line = line.replace('\n', '')
+        line = line.split(',')
+
+        #convert each element to an integer
+        newline = []
+        for i in line:
+            v = int(i)
+            newline.append(v)
+        result.append(newline)
+
+    return result
 
 
 
-array2_mm(some_array)
-
+#array2_mm(some_array)
+print readtoarray("", "testproblems1.txt")
 #print sum(some_array, 0)
