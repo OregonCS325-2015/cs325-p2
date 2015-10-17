@@ -1,4 +1,4 @@
-__author__ = 'Robert Jackson'
+__author__ = 'Robert Jackson, michael Hoppes'
 import functools
 import xdrlib
 # ARRAY TWO
