@@ -1,22 +1,15 @@
-__author__ = 'Robert Jackson'
-import functools
 
+import functools
+import printArray
+
+  #todo  make this return the array, and the max...perhaps then it's easier to use the print functions separately?
+# ARRAY TWO
 #@Params
 #Array of numbers
 #max the max indicie in the array
 #min the minimum indicy in the array
 
-some_array = [-10,21,44,23,-16,213,4,9,-10,1,16,3]
-
-def readtoarray(loc, name):
-
-    file = open(loc+name, 'r')
-    result = ( file.readline())
-    return result
-
-
-
-def iter_mm(arry):
+def array2_mm(arry):
     biggest = 0     #value to store the largest sum
     max_i=0         #minimum and maximum indices
     min_i =0
@@ -39,18 +32,19 @@ def iter_mm(arry):
                     min_i = i   # reset the indicators
                     max_i = n
                     biggest =  min_v
-
+    #todo get rid of spaces
     print '[',
     for i in range(min_i, max_i + 1):
         print arry[i],
         if i != max_i:
-            print ',' "",
+            print ',' ,
     print ']'
     print biggest
 
 
+## using the read to array now located in printArray to get a file and push all the arrays through the functions
+## printArray gets the function read_to_array, which generates arrays from arrays in the file
+## loops over them and fires them into array_2
+for fArrays in printArray.read_to_array("","testproblems1.txt"):
 
-
-iter_mm(some_array)
-
-#print sum(some_array, 0)
+    array2_mm(fArrays)
