@@ -1,5 +1,8 @@
 __author__ = 'Robert Jackson, michael Hoppes'
 import functools
+import printArray
+
+  #todo  make this return the array, and the max...perhaps then it's easier to use the print functions separately?
 # ARRAY TWO
 #@Params
 #Array of numbers
@@ -38,33 +41,11 @@ def array2_mm(arry):
     print ']'
     print biggest
 
-#read a file
-# convert each line to an array or integers
-# returns an array of arrays of integers
-#@params loc = location, name = file name
 
-def read_to_array(loc, name):
-    result = []
-    f = open(loc+name, 'r')
-    for line in f:
-        # get rid of junk
-        # for some reason makes me use equal...not sure that's right but works
-        line=  line.replace('[', '')
-        line = line.replace(']', '')
-        line = line.replace('\n', '')
-        line = line.split(',')
+## using the read to array now located in printArray to get a file and push all the arrays through the functions
+for fArrays in printArray.read_to_array("","testproblems1.txt"):
 
-        #convert each element to an integer
-        newline = []
-        for i in line:
-            v = int(i)
-            newline.append(v)
-        result.append(newline)
-
-    return result
+    array2_mm(fArrays)
 
 
-
-#array2_mm(some_array)
-print readtoarray("", "testproblems1.txt")
 #print sum(some_array, 0)
