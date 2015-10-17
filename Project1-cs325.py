@@ -1,22 +1,13 @@
 __author__ = 'Robert Jackson'
 import functools
 
+# ARRAY TWO
 #@Params
 #Array of numbers
 #max the max indicie in the array
 #min the minimum indicy in the array
 
-some_array = [-10,21,44,23,-16,213,4,9,-10,1,16,3]
-
-def readtoarray(loc, name):
-
-    file = open(loc+name, 'r')
-    result = ( file.readline())
-    return result
-
-
-
-def iter_mm(arry):
+def array2_mm(arry):
     biggest = 0     #value to store the largest sum
     max_i=0         #minimum and maximum indices
     min_i =0
@@ -44,13 +35,13 @@ def iter_mm(arry):
     for i in range(min_i, max_i + 1):
         print arry[i],
         if i != max_i:
-            print ',' "",
+            print ',' ,
     print ']'
     print biggest
 
 
 
 
-iter_mm(some_array)
+array2_mm(some_array)
 
 #print sum(some_array, 0)
