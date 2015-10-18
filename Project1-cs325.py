@@ -18,8 +18,8 @@ printArray.writeFile(location, filename, "CS325 Project 1", "w")
 #min the minimum indices in the array
 
 def algo1_mm(array):
-    biggest = 0     #value to store the largest sum
-    max_i = 0         #minimum and maximum indices 
+    biggest = -220000     #value to store the largest sum
+    max_i = 0         #minimum and maximum indices
     min_i = 0
 
     n = len(array)
@@ -31,7 +31,7 @@ def algo1_mm(array):
     for i in range(0, n-1):
         for j in range (i+1, n):
             sum = 0;
-            for k in range(i, j):
+            for k in range(i, j+1):
                 sum += array[k]
 
             if sum > biggest:
