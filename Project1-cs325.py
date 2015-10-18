@@ -40,7 +40,7 @@ def algo1_mm(array):
                 biggest = sum
 
     #todo write to file
-    printArray.writeFile(location, filename, "Algo1 Max Subarray:" + str(array[min_i:max_i]) + ' Sum: ' + str(biggest))
+    printArray.writeFile(location, filename, "Algo1 Max Subarray:" + str(array[min_i:(max_i+1)]) + ' Sum: ' + str(biggest))
 
 def algo2_mm(array):
     biggest = 0     #value to store the largest sum
@@ -66,7 +66,7 @@ def algo2_mm(array):
                 max_i = j
                 biggest =  min_v
 
-    printArray.writeFile(location, filename, "Algo2 Max Subarray: " + str(array[min_i:max_i]) + ' Sum: ' + str(biggest))
+    printArray.writeFile(location, filename, "Algo2 Max Subarray: " + str(array[min_i:(max_i+1)]) + ' Sum: ' + str(biggest))
 
 #Description: This program uses divide and conquer algorithm to
 #take as an input an array and output the subbarray with maximum
@@ -100,7 +100,7 @@ def maxSubarray3 (Array, low, high):
         sum = crossSum
         return (crossLow, crossHigh, crossSum)
 
-    printArray.writeFile(location, filename, "Algo3 Max Subarray: " + str(Array[low:high]) + ' Sum: ' + str(sum))
+    printArray.writeFile(location, filename, "Algo3 Max Subarray: " + str(Array[low:(high+1)]) + ' Sum: ' + str(sum))
 
 def maxCrossingSubarray(Array, low, mid, high):
    leftSum=-2000000000
@@ -140,7 +140,7 @@ def algo4_mm(array):
             low = endingHereLow
             high = endingHereHigh
 
-    printArray.writeFile(location, filename, "Algo 3 Max Subarray:" + str(array[low:high]) + ' Sum: ' + str(maxSum))
+    printArray.writeFile(location, filename, "Algo 3 Max Subarray:" + str(array[low:(high+1)]) + ' Sum: ' + str(maxSum))
     return [low, high, maxSum]
 
 ## using the read to array now located in printArray to get a file and push all the arrays through the functions
