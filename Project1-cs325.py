@@ -78,18 +78,18 @@ def maxSubarray3 (Array, low, high):
 
     if (leftSum>=rightSum and leftSum>=crossSum):
         low = leftLow
-        high = leftHigh
+        high = leftHigh+1
         sum = leftSum
         return (leftLow, leftHigh, leftSum)
 
     elif (rightSum >= leftSum and rightSum>= crossSum):
         low = rightLow
-        high = rightHigh
+        high = rightHigh+1
         sum = rightSum
         return (rightLow, rightHigh, rightSum)
     else:
         low = crossLow
-        high = crossHigh
+        high = crossHigh+1
         sum = crossSum
         return (crossLow, crossHigh, crossSum)
 
@@ -152,15 +152,15 @@ for fArrays in printArray.read_to_array("","testproblems1.txt"):
     algo4_mm(fArrays)
 
 
-
-#This is for the experimental testing:
-n = 10
-sizeN = 10000
-totalTime = 0
-for i in range(n):
-        A = generateArray.generateArray(sizeN)
-        start = time.time()
-        algo4_mm(A)
-        stop = time.time()
-        totalTime += stop - start
-print n,"in",sizeN,": ", totalTime/n
+#
+# #This is for the experimental testing:
+# n = 10
+# sizeN = 10000
+# totalTime = 0
+# for i in range(n):
+#         A = generateArray.generateArray(sizeN)
+#         start = time.time()
+#         algo4_mm(A)
+#         stop = time.time()
+#         totalTime += stop - start
+# print n,"in",sizeN,": ", totalTime/n
