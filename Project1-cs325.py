@@ -61,6 +61,56 @@ def algo2_mm(array):
 
     printArray.writeFile("", "MSS_Results.txt", "Algo2 Max Subarray: " + str(array[min_i:max_i]) + ' Sum: ' + str(biggest))
 
+#Description: This program uses divide and conquer algorithm to
+#take as an input an array and output the subbarray with maximum
+#sum along with the sum.
+#@params an array, the begin, and the length of the array -1
+def maxSubarray3 (Array, low, high):
+#base case (if only one element)
+    if (high == low):
+        return (low, high, Array[low])
+
+    else:
+        mid = (low+high)/2
+        leftLow, leftHigh, leftSum = maxSubarray3 (Array, low, mid)
+        rightLow, rightHigh, rightSum = maxSubarray3 (Array, mid+1, high)
+        crossLow, crossHigh, crossSum = maxCrossingSubarray(Array, low, mid, high)
+
+    if (leftSum>=rightSum and leftSum>=crossSum):
+        low = leftLow
+        high = leftHigh
+        sum = leftSum
+        return (leftLow, leftHigh, leftSum)
+
+    elif (rightSum >= leftSum and rightSum>= crossSum):
+        low = rightLow
+        high = rightHigh
+        sum = rightSum
+        return (rightLow, rightHigh, rightSum)
+    else:
+        low = crossLow
+        high = crossHigh
+        sum = crossSum
+        return (crossLow, crossHigh, crossSum)
+
+    printArray.writeFile("", "MSS_Results.txt", "Algo3 Max Subarray: " + str(Array[low:high]) + ' Sum: ' + str(sum))
+
+def maxCrossingSubarray(Array, low, mid, high):
+   leftSum=-2000000000
+   sum=0
+   for i in range (mid, low-1, -1):
+    sum = sum+Array[i]
+    if (sum>leftSum):
+       leftSum=sum
+       maxLeft=i
+   rightSum=-2000000000
+   sum=0
+   for j in range (mid+1, high+1):
+    sum = sum+Array[j]
+    if (sum>rightSum):
+       rightSum=sum
+       maxRight=j
+   return (maxLeft, maxRight, leftSum+rightSum)
 
 def algo4_mm(array):
     n = len(array)
@@ -83,7 +133,6 @@ def algo4_mm(array):
             low = endingHereLow
             high = endingHereHigh
 
-    #todo write to file
     printArray.writeFile("", "MSS_Results.txt", "Algo 3 Max Subarray:" + str(array[low:high]) + ' Sum: ' + str(maxSum))
     return [low, high, maxSum]
 
@@ -97,7 +146,7 @@ for fArrays in printArray.read_to_array("","testproblems1.txt"):
     algo2_mm(fArrays)
 
 for fArrays in printArray.read_to_array("","testproblems1.txt"):
-    #algo3_mm(fArrays)
+    maxSubarray3(fArrays,0,len(fArrays)-1)
 
 for fArrays in printArray.read_to_array("","testproblems1.txt"):
     algo4_mm(fArrays)
