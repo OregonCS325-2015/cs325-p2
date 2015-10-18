@@ -7,10 +7,10 @@ import generateArray
 # ARRAY TWO
 #@Params
 #Array of numbers
-#max the max indicie in the array
-#min the minimum indicy in the array
+#max the max indices in the array
+#min the minimum indices in the array
 
-def array1_mm(array):
+def algo1_mm(array):
     biggest = 0     #value to store the largest sum
     max_i = 0         #minimum and maximum indices
     min_i = 0
@@ -32,11 +32,10 @@ def array1_mm(array):
                 max_i = j
                 biggest = sum
 
-    print array
-    printArray.printArray(array, min_i, max_i)
-    print biggest
+    #todo write to file
+    printArray.writeFile("", "MSS_Results.txt", "Algo1 Max Subarray:" + str(array[min_i:max_i]) + ' Sum: ' + str(biggest))
 
-def array2_mm(array):
+def algo2_mm(array):
     biggest = 0     #value to store the largest sum
     max_i = 0         #minimum and maximum indices
     min_i = 0
@@ -60,13 +59,10 @@ def array2_mm(array):
                 max_i = j
                 biggest =  min_v
 
-    #todo get rid of spaces
-    print array
-    printArray.printArray(array, min_i, max_i)
-    print biggest
+    printArray.writeFile("", "MSS_Results.txt", "Algo2 Max Subarray: " + str(array[min_i:max_i]) + ' Sum: ' + str(biggest))
 
 
-def array4_mm(array):
+def algo4_mm(array):
     n = len(array)
     maxSum = -2999999999         #value to store the largest sum
     endingHereSum = -2999999999
@@ -87,21 +83,25 @@ def array4_mm(array):
             low = endingHereLow
             high = endingHereHigh
 
+    #todo write to file
+    printArray.writeFile("", "MSS_Results.txt", "Algo 3 Max Subarray:" + str(array[low:high]) + ' Sum: ' + str(maxSum))
     return [low, high, maxSum]
 
 ## using the read to array now located in printArray to get a file and push all the arrays through the functions
 ## printArray gets the function read_to_array, which generates arrays from arrays in the file
 ## loops over them and fires them into array_2
 for fArrays in printArray.read_to_array("","testproblems1.txt"):
-    #array1_mm(fArrays)
-    #array2_mm(fArrays)
+    algo1_mm(fArrays)
 
-    #alg 3 goes here
+for fArrays in printArray.read_to_array("","testproblems1.txt"):
+    algo2_mm(fArrays)
 
-    #low, high, maxSum = array4_mm(fArrays)
-    #printArray.printArray(fArrays, low, high + 1)
-    #print maxSum
-    print ''
+for fArrays in printArray.read_to_array("","testproblems1.txt"):
+    #algo3_mm(fArrays)
+
+for fArrays in printArray.read_to_array("","testproblems1.txt"):
+    algo4_mm(fArrays)
+
 
 
 #This is for the experimental testing:
@@ -111,7 +111,7 @@ totalTime = 0
 for i in range(n):
         A = generateArray.generateArray(sizeN)
         start = time.time()
-        array4_mm(A)
+        algo4_mm(A)
         stop = time.time()
         totalTime += stop - start
 print n,"in",sizeN,": ", totalTime/n
