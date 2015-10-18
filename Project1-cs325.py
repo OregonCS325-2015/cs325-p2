@@ -19,7 +19,7 @@ printArray.writeFile(location, filename, "CS325 Project 1", "w")
 
 def algo1_mm(array):
     biggest = 0     #value to store the largest sum
-    max_i = 0         #minimum and maximum indices
+    max_i = 0         #minimum and maximum indices 
     min_i = 0
 
     n = len(array)
