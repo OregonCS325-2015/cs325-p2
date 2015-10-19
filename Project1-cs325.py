@@ -64,6 +64,7 @@ def algo2_mm(array):
 
 
 # Description: This program uses divide and conquer algorithm to
+#taken from Introduction to Algorithms Third Edition page71-72
 # take as an input an array and output the subbarray with maximum
 # sum along with the sum.
 # @params an array, the begin, and the length of the array -1
