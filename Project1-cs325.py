@@ -94,7 +94,6 @@ def maxSubarray3(Array, low, high):
         sum = crossSum
         return (crossLow, crossHigh, crossSum)
 
-
 def maxCrossingSubarray(Array, low, mid, high):
     leftSum = -2000000000
     sum = 0
