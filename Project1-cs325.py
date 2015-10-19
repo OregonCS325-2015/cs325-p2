@@ -1,5 +1,5 @@
 
-import printArray
+import io
 import time
 import generateArray
 
@@ -8,7 +8,7 @@ location = ""
 filename = "MSS_Results.txt"
 
 # Clear and/or initialize the output file
-printArray.writeFile(location, filename, "CS325 Project 1", "w")
+io.writeFile(location, filename, "CS325 Project 1", "w")
 
   #todo  make this return the array, and the max...perhaps then it's easier to use the print functions separately?
 # ARRAY TWO
@@ -40,7 +40,7 @@ def algo1_mm(array):
                 biggest = sum
 
     #todo write to file
-    printArray.writeFile(location, filename, "Algo1 Max Subarray:" + str(array[min_i:(max_i+1)]) + ' Sum: ' + str(biggest))
+    io.writeFile(location, filename, "Algo1 Max Subarray:" + str(array[min_i:(max_i+1)]) + ' Sum: ' + str(biggest))
 
 def algo2_mm(array):
     biggest = 0     #value to store the largest sum
@@ -66,7 +66,7 @@ def algo2_mm(array):
                 max_i = j
                 biggest =  min_v
 
-    printArray.writeFile(location, filename, "Algo2 Max Subarray: " + str(array[min_i:(max_i+1)]) + ' Sum: ' + str(biggest))
+    io.writeFile(location, filename, "Algo2 Max Subarray: " + str(array[min_i:(max_i+1)]) + ' Sum: ' + str(biggest))
 
 #Description: This program uses divide and conquer algorithm to
 #take as an input an array and output the subbarray with maximum
@@ -100,7 +100,7 @@ def maxSubarray3 (Array, low, high):
         sum = crossSum
         return (crossLow, crossHigh, crossSum)
 
-    printArray.writeFile(location, filename, "Algo3 Max Subarray: " + str(Array[low:(high+1)]) + ' Sum: ' + str(sum))
+    io.writeFile(location, filename, "Algo3 Max Subarray: " + str(Array[low:(high+1)]) + ' Sum: ' + str(sum))
 
 def maxCrossingSubarray(Array, low, mid, high):
    leftSum=-2000000000
@@ -140,22 +140,22 @@ def algo4_mm(array):
             low = endingHereLow
             high = endingHereHigh
 
-    printArray.writeFile(location, filename, "Algo 3 Max Subarray:" + str(array[low:(high+1)]) + ' Sum: ' + str(maxSum))
+    io.writeFile(location, filename, "Algo 3 Max Subarray:" + str(array[low:(high+1)]) + ' Sum: ' + str(maxSum))
     return [low, high, maxSum]
 
 ## using the read to array now located in printArray to get a file and push all the arrays through the functions
 ## printArray gets the function read_to_array, which generates arrays from arrays in the file
 ## loops over them and fires them into array_2
-for fArrays in printArray.read_to_array("","testproblems1.txt"):
+for fArrays in io.read_to_array("","MSS_Problems.txt"):
     algo1_mm(fArrays)
 
-for fArrays in printArray.read_to_array("","testproblems1.txt"):
+for fArrays in io.read_to_array("","MSS_Problems.txt"):
     algo2_mm(fArrays)
 
-for fArrays in printArray.read_to_array("","testproblems1.txt"):
+for fArrays in io.read_to_array("","MSS_Problems.txt"):
     maxSubarray3(fArrays,0,len(fArrays)-1)
 
-for fArrays in printArray.read_to_array("","testproblems1.txt"):
+for fArrays in io.read_to_array("","MSS_Problems.txt"):
     algo4_mm(fArrays)
 
 
