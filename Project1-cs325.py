@@ -12,14 +12,14 @@ io.writeFile(location, filename, "CS325 Project 1", "w")
 
 
 def algo1_mm(array):
-    biggest = -220000  # value to store the largest sum
+    biggest = array[0]  # value to store the largest sum
     max_i = 0  # minimum and maximum indices
     min_i = 0
 
     n = len(array)
 
-    if n < 2:
-        return 0
+    if n < 1:
+        return
 
     # cycle though the array
     for i in range(0, n - 1):
@@ -33,18 +33,18 @@ def algo1_mm(array):
                 max_i = j
                 biggest = sum
 
-    io.writeFile(location, filename, "Algo 1 Max Subarray:" + str(array[min_i:(max_i + 1)]) + ' Sum: ' + str(biggest))
+    io.writeFile(location, filename, "Algo 1 Max Subarray: " + str(array[min_i:(max_i + 1)]) + ' Sum: ' + str(biggest))
 
 
 def algo2_mm(array):
-    biggest = 0  # value to store the largest sum
+    biggest = array[0]  # value to store the largest sum
     max_i = 0  # minimum and maximum indices
     min_i = 0
 
     n = len(array)
 
-    if n < 2:
-        return 0
+    if n < 1:
+        return
 
     # cycle though the array
     for i in range(0, n - 1):
@@ -117,8 +117,8 @@ def algo4_mm(array):
     maxSum = -2999999999  # value to store the largest sum
     endingHereSum = -2999999999
 
-    if n < 2:
-        return 0
+    if n < 1:
+        return
 
     for i in range(0, n):
         endingHereHigh = i
@@ -133,7 +133,7 @@ def algo4_mm(array):
             low = endingHereLow
             high = endingHereHigh
 
-    io.writeFile(location, filename, "Algo 4 Max Subarray:" + str(array[low:(high + 1)]) + ' Sum: ' + str(maxSum))
+    io.writeFile(location, filename, "Algo 4 Max Subarray: " + str(array[low:(high + 1)]) + ' Sum: ' + str(maxSum))
     return [low, high, maxSum]
 
 
