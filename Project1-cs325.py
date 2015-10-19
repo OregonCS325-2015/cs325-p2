@@ -6,6 +6,7 @@ import generateArray
 #Output filename setup
 location = ""
 filename = "MSS_Results.txt"
+inputFilename = "MSS_Problems.txt"
 
 # Clear and/or initialize the output file
 io.writeFile(location, filename, "CS325 Project 1", "w")
@@ -140,22 +141,22 @@ def algo4_mm(array):
             low = endingHereLow
             high = endingHereHigh
 
-    io.writeFile(location, filename, "Algo 3 Max Subarray:" + str(array[low:(high+1)]) + ' Sum: ' + str(maxSum))
+    io.writeFile(location, filename, "Algo 4 Max Subarray:" + str(array[low:(high+1)]) + ' Sum: ' + str(maxSum))
     return [low, high, maxSum]
 
 ## using the read to array now located in printArray to get a file and push all the arrays through the functions
 ## printArray gets the function read_to_array, which generates arrays from arrays in the file
 ## loops over them and fires them into array_2
-for fArrays in io.read_to_array("","MSS_Problems.txt"):
+for fArrays in io.read_to_array(location, inputFilename):
     algo1_mm(fArrays)
 
-for fArrays in io.read_to_array("","MSS_Problems.txt"):
+for fArrays in io.read_to_array(location, inputFilename):
     algo2_mm(fArrays)
 
-for fArrays in io.read_to_array("","MSS_Problems.txt"):
+for fArrays in io.read_to_array(location, inputFilename):
     maxSubarray3(fArrays,0,len(fArrays)-1)
 
-for fArrays in io.read_to_array("","MSS_Problems.txt"):
+for fArrays in io.read_to_array(location, inputFilename):
     algo4_mm(fArrays)
 
 
