@@ -40,3 +40,15 @@ def writeFile(loc, name, contents, method='a'):
     f.write('\n')
     f.close()
 
+#
+# #This is for the experimental testing:
+# n = 10
+# sizeN = 10000
+# totalTime = 0
+# for i in range(n):
+#         A = generateArray.generateArray(sizeN)
+#         start = time.time()
+#         algo4_mm(A)
+#         stop = time.time()
+#         totalTime += stop - start
+# print n,"in",sizeN,": ", totalTime/n
