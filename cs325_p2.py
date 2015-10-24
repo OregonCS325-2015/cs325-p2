@@ -40,20 +40,20 @@ def changegreedy(A, V):
 
     return coins, sum(coins)
 
-C,m = changegreedy(A, V)
-A = 15
-V= [1,2,4,8]
-# TODO Why does this print only [1] for V?
-print 'changegreedy for A:',A,', V:',V,': C=',C,' m =',m
+#C,m = changegreedy(A, V)
+#A = 15
+#V= [1,2,4,8]
+#  TODO Why does this print only [1] for V?
+#print 'changegreedy for A:',A,', V:',V,': C=',C,' m =',m
 
-A=29
-V=[1,3,7,12]
-C,m = changegreedy(A, V)
-print 'changegreedy for A:',A,', V:',V,': C=',C,' m =',m
-A=31
-V=[1,3,7,12]
-C,m = changegreedy(A, V)
-print 'changegreedy for A:',A,', V:',V,': C=',C,' m =',m
+#A=29
+#V=[1,3,7,12]
+#C,m = changegreedy(A, V)
+#print 'changegreedy for A:',A,', V:',V,': C=',C,' m =',m
+#A=31
+#V=[1,3,7,12]
+#C,m = changegreedy(A, V)
+#print 'changegreedy for A:',A,', V:',V,': C=',C,' m =',m
 
 #@params a integer, v an array of increasing integers
 #DP Algorithm for the coin problem
@@ -78,6 +78,6 @@ def changedp(a,v):
     return r[a]
 
 
-A = 15
-V= [1,2,4,8]
-print changedp(A,V)
+#A = 15
+#V= [1,2,4,8]
+#print changedp(A,V)
