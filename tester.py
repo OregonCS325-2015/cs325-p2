@@ -1,10 +1,73 @@
 # this is a tester file to generate data
 
-import cs325_p2
+import cs325_p2, io
 
-def tester():
+# Part 4
+#for A in range(2000, 2201, 10):
+#    V = [1,5,10,25,50]
+#    C,m = cs325_p2.changeslow(A, V)
+#    print 'changeslow for A:',A,'m =',m
+
+for A in range(2000, 2201, 10):
+    V = [1,5,10,25,50]
+    C,m = cs325_p2.changegreedy(A, V)
+    print 'changegreedy for A:',A,'m =',m
+
+#for A in range(2000, 2201, 10):
+#    V = [1,5,10,25,50]
+#    C,m = cs325_p2.changedp(A, V)
+#    print 'changedb for A:',A,'m =',m
 
 
-    return
+# Part 5
+#for A in range(2000, 2201):
+#    V1 = [1,2,6,12,24,48,60]
+#    C,m = cs325_p2.changeslow(A, V1)
+#    print 'changeslow for V1,A:',A,'m =',m
+#    V2 = [1,6,13,37,150]
+#    C,m = cs325_p2.changeslow(A, V2)
+#    print 'changeslow for V2,A:',A,'m =',m
 
-for range()
+io.writeFile('', 'p5v1changegreedy2k.txt', 'changegreedy, A [2000, 2200], V1=[1,2,6,12,24,48,60]', 'w')
+for A in range(2000, 2201):
+    V1 = [1,2,6,12,24,48,60]
+    C,m = cs325_p2.changegreedy(A, V1)
+    print 'changegreedy for V1,A:',A,'m =',m
+    io.writeFile('', 'p5v1changegreedy2k.txt', str(m))
+
+io.writeFile('', 'p5v2changegreedy2k.txt', 'changegreedy, A [2000, 2200], V2=[1,6,13,37,15', 'w')
+for A in range(2000, 2201):
+    V2 = [1,6,13,37,150]
+    C,m = cs325_p2.changegreedy(A, V2)
+    print 'changegreedy for V2,A:',A,'m =',m
+    io.writeFile('', 'p5v2changegreedy2k.txt', str(m))
+
+#for A in range(2000, 2201):
+#    V1 = [1,2,6,12,24,48,60]
+#    C,m = cs325_p2.changedp(A, V1)
+#    print 'changedb for V1,A:',A,'m =',m
+#    V2 = [1,6,13,37,150]
+#    C,m = cs325_p2.changedp(A, V2)
+#    print 'changedb for V2,A:',A,'m =',m
+
+io.writeFile('', 'p5v1changegreedy10k.txt', 'changegreedy, A [10000, 10200], V1=[1,2,6,12,24,48,60]', 'w')
+for A in range(10000, 10201):
+    V1 = [1,2,6,12,24,48,60]
+    C,m = cs325_p2.changegreedy(A, V1)
+    print 'changegreedy for V1,A:',A,'m =',m
+    io.writeFile('', 'p5v2changegreedy10k.txt', str(m))
+
+io.writeFile('', 'p5v2changegreedy10k.txt', 'changegreedy, A [10000, 10200], V2=[1,6,13,37,150', 'w')
+for A in range(10000, 10201):
+    V2 = [1,6,13,37,150]
+    C,m = cs325_p2.changegreedy(A, V2)
+    print 'changegreedy for V2,A:',A,'m =',m
+    io.writeFile('', 'p5v2changegreedy10k.txt', str(m))
+
+#for A in range(10000, 10201):
+#    V1 = [1,2,6,12,24,48,60]
+#    C,m = cs325_p2.changedp(A, V1)
+#    print 'changedb for V1,A:',A,'m =',m
+#    V2 = [1,6,13,37,150]
+#    C,m = cs325_p2.changedp(A, V2)
+#    print 'changedb for V2,A:',A,'m =',m
