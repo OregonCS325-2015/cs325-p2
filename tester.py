@@ -55,7 +55,7 @@ for A in range(10000, 10201):
     V1 = [1,2,6,12,24,48,60]
     C,m = cs325_p2.changegreedy(A, V1)
     print 'changegreedy for V1,A:',A,'m =',m
-    io.writeFile('', 'p5v2changegreedy10k.txt', str(m))
+    io.writeFile('', 'p5v1changegreedy10k.txt', str(m))
 
 io.writeFile('', 'p5v2changegreedy10k.txt', 'changegreedy, A [10000, 10200], V2=[1,6,13,37,150', 'w')
 for A in range(10000, 10201):
