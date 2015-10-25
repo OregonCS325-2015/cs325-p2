@@ -28,19 +28,18 @@ def changeSlow (A,V):
     c=[0]*s
     for i in range (0,s):
         if (V[i]==A):
-            c[i]=1
-            return (c,1)
+           c[i]=1
+           return (c,1)
 
     minResult = A
     for i in range (1, A):
         c1,result1 = changeSlow(i, V)
         c2,result2 = changeSlow(A-i,V)
         result=result1+result2
-
         if (result<minResult):
-            minResult=result
-            for j in range (s):
-                c[j]=c1[j]+c2[j]
+           minResult=result
+           for j in range (s):
+            c[j]=c1[j]+c2[j]
     return (c,minResult)
 
 
@@ -61,8 +60,8 @@ def changegreedy(A, V):
     return coins, sum(coins)
 
 #C,m = changegreedy(A, V)
-A = 15
-V= [1,2,4,8]
+A = 11
+V= [1,3,4]
 #  TODO Why does this print only [1] for V?
 #print 'changegreedy for A:',A,', V:',V,': C=',C,' m =',m
 
@@ -75,12 +74,34 @@ V= [1,2,4,8]
 #C,m = changegreedy(A, V)
 #print 'changegreedy for A:',A,', V:',V,': C=',C,' m =',m
 
+
+def changedp (A,V):
+
+    r=[]
+    least =0
+    #start a first coin
+    for j in range (0,len(V)):
+
+        for i in range (V[j], A+1):
+
+            if (V[j]==i):
+                r.append(1)
+
+            elif (V[j] >= i):   #if our coin is less than the A we're checking
+                r.append( min( r[i-1]+1, r[V[j]-i]+1 )) # add the min of the previous save+1 (start0) or the save of current coin-current value +1
+
+    for k in range (0,len(r)):
+        least += r[k]
+
+    return r, least
+
+
 #@params a integer, v an array of increasing integers
 #DP Algorithm for the coin problem
 # titled changedp as per project instructions
 # returns 4 for testing array- verified
 #todo may need to instead return the entire array, not just r[somevalue]
-def changedp(A,V):
+def changedp_variant(A,V):
 
     r=[]
     for i in range (0,A+1):
@@ -98,6 +119,6 @@ def changedp(A,V):
     return r, r[A]
 
 
-print changedp(A,V)
-print changegreedy(A,V)
-print changeSlow(A, V)
+print 'this is changeDP:', changedp(A,V)
+print 'this is changeGreedy:', changegreedy(A,V)
+print 'this is changeSlow:', changeSlow(A, V)
