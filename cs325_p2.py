@@ -19,9 +19,21 @@ import time
 A = 15
 V= [1,2,4,8]
 
-def changeslow(A, K):
+#params A = target value to return min coins
+# returns the minimum number
+#verified on test Array
+def changeslow(A, V):
 
-    return
+    if A == 0:
+        return 0
+
+    minResult = 2323232
+    for i in range (0, len(V)):
+
+         if (V[i] <= A):
+             minResult =  min(minResult, changeslow(A-V[i], V) +1)
+
+    return minResult
 
 
 def changegreedy(A, V):
@@ -78,6 +90,6 @@ def changedp(a,v):
     return r[a]
 
 
-#A = 15
-#V= [1,2,4,8]
-#print changedp(A,V)
+print changedp(A,V)
+
+print changeslow(A, V)
