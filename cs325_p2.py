@@ -16,24 +16,31 @@ import time
 
 # Testing array
 # using these should return C=[1,1,1,1] and M = 4 ie c[3] = 4
-A = 11
-V= [1,2,4,8]
+#A = 11
+#V= [1,2,4,8]
 
 #@params A = target value to return min coins
-# returns the minimum number
+#returns the minimum number, and the array of lowest coins
 #verified on test Array
-def changeslow(A, V):
+def changeSlow (A,V):
+    s=len(V)
+    c=[0]*s
+    for i in range (0,s):
+        if (V[i]==A):
+            c[i]=1
+            return (c,1)
 
-    if A == 0:
-        return 0
+    minResult = A
+    for i in range (1, A):
+        c1,result1 = changeSlow(i, V)
+        c2,result2 = changeSlow(A-i,V)
+        result=result1+result2
 
-    minResult = 2323232
-    for i in range (0, len(V)):
-
-         if (V[i] <= A):
-             minResult =  min(minResult, changeslow(A-V[i], V) +1)
-
-    return minResult
+        if (result<minResult):
+            minResult=result
+            for j in range (s):
+                c[j]=c1[j]+c2[j]
+    return (c,minResult)
 
 
 def changegreedy(A, V):
@@ -53,8 +60,8 @@ def changegreedy(A, V):
     return coins, sum(coins)
 
 #C,m = changegreedy(A, V)
-#A = 15
-#V= [1,2,4,8]
+A = 15
+V= [1,2,4,8]
 #  TODO Why does this print only [1] for V?
 #print 'changegreedy for A:',A,', V:',V,': C=',C,' m =',m
 
@@ -72,7 +79,7 @@ def changegreedy(A, V):
 # titled changedp as per project instructions
 # returns 4 for testing array- verified
 #todo may need to instead return the entire array, not just r[somevalue]
-def changedp(a,v):
+def changedp(A,V):
 
     r=[]
     for i in range (0,A+1):
@@ -92,4 +99,4 @@ def changedp(a,v):
 
 print changedp(A,V)
 
-print changeslow(A, V)
+print changeSlow(A, V)
