@@ -9,8 +9,9 @@
 #DESCRIPTION
 #todo enter description
 
+
 import math
-import io
+import inout
 import time
 
 
@@ -48,7 +49,7 @@ def changegreedy(A, V):
     coinage = V
     coins = []
     while change > 0:
-        coins.insert(0, int(math.floor(change / max(coinage))))
+        coins.insert(0, int(change / max(coinage)))
         change = change % max(coinage)
         coinage.pop()
 
@@ -94,9 +95,9 @@ def changedp(A,V):
 
             else: # our A is greater than the coin
                 r[i] = r[i-V[j]]+1  #subtract the coin from the A to get the save index to use add one
-    return r[A]
+    return r, r[A]
 
 
 print changedp(A,V)
-
+print changegreedy(A,V)
 print changeSlow(A, V)
