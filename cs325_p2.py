@@ -13,34 +13,38 @@
 import math
 import inout
 import time
+import gc
 
 
 # Testing array
 # using these should return C=[1,1,1,1] and M = 4 ie c[3] = 4
-#A = 11
-#V= [1,2,4,8]
+A = 40
+V= [1,3,4,10,25, 50]
 
 #@params A = target value to return min coins
 #returns the minimum number, and the array of lowest coins
 #verified on test Array
-def changeSlow (A,V):
+def changeSlow (A, V):
     s=len(V)
     c=[0]*s
+
     for i in range (0,s):
         if (V[i]==A):
-           c[i]=1
-           return (c,1)
+            c[i]=1
+            return (c,1)
 
     minResult = A
+
     for i in range (1, A):
         c1,result1 = changeSlow(i, V)
         c2,result2 = changeSlow(A-i,V)
         result=result1+result2
         if (result<minResult):
-           minResult=result
-           for j in range (s):
-            c[j]=c1[j]+c2[j]
-    return (c,minResult)
+            minResult=result
+            for j in range (s):
+                c[j]=c1[j]+c2[j]
+
+    return c,minResult
 
 
 def changegreedy(A, V):
@@ -58,50 +62,27 @@ def changegreedy(A, V):
         coinage.pop()
 
     return coins, sum(coins)
-
-#C,m = changegreedy(A, V)
-A = 11
-V= [1,3,4]
-#  TODO Why does this print only [1] for V?
-#print 'changegreedy for A:',A,', V:',V,': C=',C,' m =',m
-
-#A=29
-#V=[1,3,7,12]
-#C,m = changegreedy(A, V)
-#print 'changegreedy for A:',A,', V:',V,': C=',C,' m =',m
-#A=31
-#V=[1,3,7,12]
-#C,m = changegreedy(A, V)
-#print 'changegreedy for A:',A,', V:',V,': C=',C,' m =',m
-
-
-def changedp (A,V):
-
-    r=[]
-    least =0
-    #start a first coin
-    for j in range (0,len(V)):
-
-        for i in range (V[j], A+1):
-
-            if (V[j]==i):
-                r.append(1)
-
-            elif (V[j] >= i):   #if our coin is less than the A we're checking
-                r.append( min( r[i-1]+1, r[V[j]-i]+1 )) # add the min of the previous save+1 (start0) or the save of current coin-current value +1
-
-    for k in range (0,len(r)):
-        least += r[k]
-
-    return r, least
+#
+# #C,m = changegreedy(A, V)
+#
+# #  TODO Why does this print only [1] for V?
+# #print 'changegreedy for A:',A,', V:',V,': C=',C,' m =',m
+#
+# #A=29
+# #V=[1,3,7,12]
+# #C,m = changegreedy(A, V)
+# #print 'changegreedy for A:',A,', V:',V,': C=',C,' m =',m
+# #A=31
+# #V=[1,3,7,12]
+# #C,m = changegreedy(A, V)
+# #print 'changegreedy for A:',A,', V:',V,': C=',C,' m =',m
 
 
-#@params a integer, v an array of increasing integers
-#DP Algorithm for the coin problem
-# titled changedp as per project instructions
-# returns 4 for testing array- verified
-#todo may need to instead return the entire array, not just r[somevalue]
-def changedp_variant(A,V):
+# #@params a integer, v an array of increasing integers
+# #DP Algorithm for the coin problem
+# # titled changedp as per project instructions
+# # returns 4 for testing array- verified
+def changedp(A,V):
 
     r=[]
     for i in range (0,A+1):
@@ -120,5 +101,7 @@ def changedp_variant(A,V):
 
 
 print 'this is changeDP:', changedp(A,V)
-print 'this is changeGreedy:', changegreedy(A,V)
+
+
 print 'this is changeSlow:', changeSlow(A, V)
+print 'this is changeGreedy:', changegreedy(A,V)
