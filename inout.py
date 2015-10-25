@@ -90,7 +90,7 @@ def cmd_line_io(argv):
     print 'Input file is "', inputfile
     print 'Output file is "', outputfile
 
-## vip  this function only fires if io.py is run directly but not when imported!!!
+## vip  this function only fires if inout.py is run directly but not when imported!!!
 # used to test the reading of a file from cmd line
 if __name__ == "__main__":
    cmd_line_io(sys.argv[1:])
