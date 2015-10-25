@@ -94,15 +94,3 @@ def cmd_line_io(argv):
 # used to test the reading of a file from cmd line
 if __name__ == "__main__":
    cmd_line_io(sys.argv[1:])
-#
-# #This is for the experimental testing:
-# n = 10
-# sizeN = 10000
-# totalTime = 0
-# for i in range(n):
-#         A = generateArray.generateArray(sizeN)
-#         start = time.time()
-#         algo4_mm(A)
-#         stop = time.time()
-#         totalTime += stop - start
-# print n,"in",sizeN,": ", totalTime/n
