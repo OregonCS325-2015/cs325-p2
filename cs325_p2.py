@@ -16,12 +16,24 @@ import time
 
 # Testing array
 # using these should return C=[1,1,1,1] and M = 4 ie c[3] = 4
-A = 15
+A = 11
 V= [1,2,4,8]
 
-def changeslow(A, K):
+#@params A = target value to return min coins
+# returns the minimum number
+#verified on test Array
+def changeslow(A, V):
 
-    return
+    if A == 0:
+        return 0
+
+    minResult = 2323232
+    for i in range (0, len(V)):
+
+         if (V[i] <= A):
+             minResult =  min(minResult, changeslow(A-V[i], V) +1)
+
+    return minResult
 
 
 def changegreedy(A, V):
@@ -63,21 +75,21 @@ def changegreedy(A, V):
 def changedp(a,v):
 
     r=[]
-    for i in range (0,a+1):
+    for i in range (0,A+1):
          r.append (0)
 
     #start a first coin
-    for j in range (0,len(v)):
+    for j in range (0,len(V)):
 
-        for i in range (v[j], a+1):
-            if v[j] >= i:   #if our coin is less that the A
-                r[i] = min ( r[i-1]+1,r[v[j]-i]+1 ) # add the min of the previous save+1 (start0) or the save of current coin-current value +1
+        for i in range (V[j], A+1):
+            if V[j] >= i:   #if our coin is less that the A
+                r[i] = min ( r[i-1]+1, r[V[j]-i]+1 ) # add the min of the previous save+1 (start0) or the save of current coin-current value +1
 
             else: # our A is greater than the coin
-                r[i] = r[i-v[j]]+1  #subtract the coin from the A to get the save index to use add one
-    return r[a]
+                r[i] = r[i-V[j]]+1  #subtract the coin from the A to get the save index to use add one
+    return r[A]
 
 
-#A = 15
-#V= [1,2,4,8]
-#print changedp(A,V)
+print changedp(A,V)
+
+print changeslow(A, V)
