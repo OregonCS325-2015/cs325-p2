@@ -90,16 +90,58 @@ def changedp(A,V):
      a[0][j]=j
 
     for i in range(1,len(V)):
-     for j in range (1,A+1):
-       if (j>=V[i]):
-          a[i][j]=min(a[i-1][j],1+a[i][j-V[i]])
-       else:
-          a[i][j]=a[i-1][j]
+        for j in range (1,A+1):
+            if (j>=V[i]):
+              a[i][j]=min(a[i-1][j],1+a[i][j-V[i]])
+            else:
+              a[i][j]=a[i-1][j]
 
     minChange=a[len(V)-1][A]
 
+    #the following code to trace back and find
+   #values of c[i]
+    m=[-1]*len(V)
+    x=len(V)-1
+    m[x]=0
+    y=A
+    #print a[x][y]
+    value=1
+    while (value>0):
+        if(y<V[x]):
+            x=x-1
+            m[x]=m[x]+1
+        else:
+            if ((a[x-1][y])<(a[x][y-V[x]]+1)):
+                x=x-1
+                m[x]=m[x]+1
+            else:
+                y=y-V[x]
+                m[x]=m[x]+1
+                value=a[x][y]
+    for i in range (len(m)):
+        if (m[i]==-1):
+            m[i]=0
 
-    return minChange
+    return (m, minChange)
+
+    # r=[]
+    # for i in range (0,A+1):
+    #     r.append (0)
+    #
+    # #start a first coin
+    # for j in range (0,len(V)):
+    #
+    #     for i in range (V[j], A+1):
+    #         if V[j] <= i:   #if our coin is less that the A
+    #             r[i] = min ( r[i-1]+1, r[i-V[j]]+1 ) # add the min of the previous save+1 (start0) or the save of current coin-current value +1
+    #
+    #         else: # our A is greater than the coin
+    #             r[i] = r[i-1]+1  #subtract the coin from the A to get the save index to use add one
+
+   # return r[A]
+
+
+
 
 
 
@@ -138,7 +180,7 @@ def changedp(A,V):
 
 
 
-    return r
+    #return r
 
 
 print 'this is changeDP:', changedp(A,V)
