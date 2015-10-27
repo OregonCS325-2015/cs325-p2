@@ -113,9 +113,9 @@ import cs325_p2, io, time
 Alow = 100
 Ahigh = 300
 
-io.writeFile('', 'p6changeslow2.txt', 'changeslow, A [' + Alow + ', ' + Ahigh + ']', 'w')
-io.writeFile('', 'p6changegreedy.txt', 'changegreedy, A [' + Alow + ', ' + Ahigh + ']', 'w')
-io.writeFile('', 'p6changedb.txt', 'changedb, A [' + Alow + ', ' + Ahigh + ']', 'w')
+io.writeFile('', 'p6changeslow2.txt', 'changeslow, A [' + str(Alow) + ', ' + str(Ahigh) + ']', 'w')
+io.writeFile('', 'p6changegreedy.txt', 'changegreedy, A [' + str(Alow) + ', ' + str(Ahigh) + ']', 'w')
+io.writeFile('', 'p6changedb.txt', 'changedb, A [' + str(Alow) + ', ' + str(Ahigh) + ']', 'w')
 
 for A in range(Alow, Ahigh):
     V = [1, 2, 4, 6, 8, 10, 12, 14, 16, 18, 20, 22, 24, 26, 28, 30]
