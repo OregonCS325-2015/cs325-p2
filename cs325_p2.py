@@ -9,7 +9,7 @@
 # DESCRIPTION
 # todo enter description
 
-
+import sys, getopt
 import math
 import inout
 import time
@@ -18,8 +18,8 @@ import gc
 
 # Testing array
 # using these should return C=[1,1,1,1] and M = 4 ie c[3] = 4
-A = 12
-V = [1,2,3,4,8,19]
+# A = 12
+# V = [1,2,3,4,8,19]
 
 
 # @params A = target value to return min coins
@@ -99,7 +99,7 @@ def changedp(A, V):
                 a[i][j] = a[i - 1][j]
 
 
-    minChange = a
+    minChange = a[len(V)-1][A]
 
     # the following code to trace back and find
     # values of c[i]
@@ -129,7 +129,7 @@ def changedp(A, V):
 
 def changedp_Alt(A, V):
 
-    r=[]
+    r=[100000]*A
     C= [0]*len(V)
     for i in range (0,A):
         r.append (0)
@@ -164,9 +164,30 @@ def changedp_Alt(A, V):
 
     return r[A-1], C
 
+if __name__ == "__main__":
+    (ifile, algo, ofile) = inout.cmd_line_io(sys.argv[1:])
 
+    if algo  == 'changedp':
+        (denom, val) = inout.read_file(ifile)
 
-print 'this is changeDP:', changedp(A, V)
-print 'this is changeDP_1:', changedp_1(A, V)
-print 'this is changeSlow:', changeSlow(A, V)
-print 'this is changeGreedy:', changegreedy(A, V)
+        for i in range (0, len(denom)):
+            inout.writeFile(ofile, changedp(val[i], denom[i]))
+
+    elif algo  == 'changeslow':
+        (denom, val) = inout.read_file(ifile)
+
+        for i in range (0, len(denom)):
+            inout.writeFile(ofile, changeSlow(val[i], denom[i]) )
+    elif algo  == 'changegreedy':
+        (denom, val) = inout.read_file(ifile)
+
+        for i in range (0, len(denom)):
+            inout.writeFile(ofile, changegreedy(val[i], denom[i]) )
+
+    else:
+        print 'Incorrect parameters provided try cs325_py -h'
+
+# print 'this is changeDP:', changedp(A, V)
+# print 'this is changeDP_1:', changedp_1(A, V)
+# print 'this is changeSlow:', changeSlow(A, V)
+# print 'this is changeGreedy:', changegreedy(A, V)

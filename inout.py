@@ -1,6 +1,13 @@
 from itertools import islice # used in file reading
 import sys, getopt
 
+
+#some globals from the cmd line
+inputfile = ''
+outputfile = ''
+algo = ''
+
+
 # Prints array from start to stop
 def printArray(array, start, stop):
     if stop >= len(array):
@@ -43,7 +50,7 @@ def read_file( name):
 
             line = line.replace('\n', '')
             line = line.replace(' ', '')
-            vals.append(line) #put every other line into the values
+            vals.append(int(line)) #put every other line into the values
 
     #if there is bad data in the file
     if len(vals) != len(denom):
@@ -53,13 +60,14 @@ def read_file( name):
     return denom, vals
 
 # Output to a file, the contents specified, defaulting to appending
-def writeFile(loc, name, contents, method='a'):
+def writeFile( name, contents, method='a'):
     try:
-        f = open(loc + name, method)
+        f = open(name, method)
     except:
         print "The file could not be opened: ", sys.exc_info()[0]
 
-    f.write(contents)
+    f.write(str(contents[0])+'\n' )
+    f.write(str(contents[1]))
     f.write('\n')
     f.close()
 
@@ -67,28 +75,33 @@ def writeFile(loc, name, contents, method='a'):
 def cmd_line_io(argv):
     inputfile = ''
     outputfile = ''
+    algo = ''
     try:
-      opts, args = getopt.getopt(argv,"hi:o:",["ifile=","ofile="])
+      opts, args = getopt.getopt(argv,"hi:a:",["ifile=", "algorithm="])
     except getopt.GetoptError:
-      print 'test.py -i <inputfile> -o <outputfile>'
+      print 'cs325_p2.py -i <inputfile> -o <outputfile>'
       sys.exit(2)
     for opt, arg in opts:
        #help
       if opt == '-h':
-         print 'test.py -i <inputfile> -o <outputfile>'
+         print 'cs325_p2.py -i <inputfile> '
          sys.exit()
 
          #input file
       elif opt in ("-i", "--ifile"):
          inputfile = arg
-         read_file(inputfile)
+         temp = inputfile.replace('.txt', '')
+         outputfile = temp +'Change.txt'
 
-         #outputfile
-      elif opt in ("-o", "--ofile"):
-         outputfile = arg
-          #todo we need a function here to just establish the file I think: and based on the inputfiles name so [inputFile]Change.txt
+        #Algorithm
+      elif opt in ("-a","--algorithm"):
+         algo = arg
+
+    return inputfile, algo, outputfile
+
     print 'Input file is "', inputfile
     print 'Output file is "', outputfile
+    print 'Algorithm is "', algo
 
 ## vip  this function only fires if inout.py is run directly but not when imported!!!
 # used to test the reading of a file from cmd line

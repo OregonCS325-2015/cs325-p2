@@ -5,6 +5,19 @@ Group Number - 11
 PROJECT 2
 CS 325 - Fall 2015
 
-https://github.com/prophet60091/cs361-p1
+https://github.com/OregonCS325-2015/cs325-p2
+
+
+To use this file type cs325_p2.py -a <algorithm name (changedp|changegreedy\changeslow)> -i <your test file name>
+
+Program automatically outputs yourfilenameChange.txt with the results
+
+Your input file must be formatted as such:
+[1, 2, 5]
+10
+[1, 3, 7, 26]
+22
+
+
 
 
