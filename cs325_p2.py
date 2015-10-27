@@ -18,8 +18,8 @@ import gc
 
 # Testing array
 # using these should return C=[1,1,1,1] and M = 4 ie c[3] = 4
-A = 6
-V = [1,3,4]
+A = 12
+V = [1,2,3,4,8,19]
 
 
 # @params A = target value to return min coins
@@ -85,7 +85,7 @@ def changegreedy(A, V):
 # #DP Algorithm for the coin problem
 # # titled changedp as per project instructions
 # # returns 4 for testing array- verified
-def changedp_1(A, V):
+def changedp(A, V):
     a = [[0] * (A + 1) for x in xrange(len(V))]
 
     for j in range(1, A + 1):
@@ -127,17 +127,17 @@ def changedp_1(A, V):
 
     return (m, minChange)
 
-def changedp(A, V):
+def changedp_Alt(A, V):
 
     r=[]
     C= [0]*len(V)
-    for i in range (0,A+1):
+    for i in range (0,A):
         r.append (0)
 
     #start a first coin
     for j in range (0,len(V)):
 
-        for i in range (1, A+1):
+        for i in range (V[j], A):
             if V[j] == i:
                 r[i-1]= 1
 
@@ -155,54 +155,15 @@ def changedp(A, V):
         test = bucket/V[k]
         if (test >= 1):  # this means we used that value at postion v[k] otherwise move down
             test = test*V[k] #it just so happens this corresponds to a certain position in r
-            bucket = bucket-test #remove this sum from the bucket
+            #bucket = bucket-test #remove this sum from the bucket
             used = r[test-1] # add the value at the position to our c
+            if used>0:
+                bucket = bucket-test
 
             C[k] = used
 
     return r[A-1], C
 
-
-
-
-
-
-    # #start a first coin
-    # for i in range (0,len(V)):
-    #
-    #     for j in range (V[i], A):
-    #         # j is the same size a the coin either append, or update
-    #         if (V[i]==j):
-    #              if len(r) <= 1:
-    #                  r.append(1)
-    #              else:
-    #                  r[len(r)-1]= 1
-
-
-
-
-    # if (V[i]==j):
-    #     if len(r) <= 1:
-    #         r.append(1)
-    #     else:
-    #         r[len(r)-1]= 1
-    #
-    # elif(j < V[i]):
-    #     r[len(r)-1] = min ( r[i-1]+1, r[V[i]-j]+1 )
-    #
-    # else:   #if our coin is
-    #     if len(r) <= 1:
-    #         r.append ( r[V[i]-1]+1) # add the min of the previous save+1 (start0) or the save of current coin-current value +1
-    #
-    #     else:
-    #         r[len(r)-1]= (r[V[i]-1]+1)
-
-    # else: # our A is greater than the coin
-    #     r[i] = r[i-V[i]]+1  #subtract the coin from the A to get the save index to use add one
-
-
-
-    # return r
 
 
 print 'this is changeDP:', changedp(A, V)
