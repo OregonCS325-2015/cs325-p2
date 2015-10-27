@@ -110,26 +110,24 @@ import cs325_p2, io, time
 
 
 # Part 6
-io.writeFile('', 'p6changeslow2.txt', 'changeslow, A [2000, 2200]', 'w')
-for A in range(2000, 2201):
-    V = [1,2,4,6,8,10,12,14,16,18,20,22,24,26,28,30]
-    start = time.time()
-    C,m = cs325_p2.changeSlow(A, V)
-    stop = time.time()
-    io.writeFile('', 'p6changeslow.txt', str(m) + ',' + str(stop-start))
+Alow = 100
+Ahigh = 300
 
-io.writeFile('', 'p6changegreedy.txt', 'changegreedy, A [2000, 2200]', 'w')
-for A in range(2000, 2201):
-    V = [1,2,4,6,8,10,12,14,16,18,20,22,24,26,28,30]
-    start = time.time()
-    C,m = cs325_p2.changegreedy(A, V)
-    stop = time.time()
-    io.writeFile('', 'p6changegreedy.txt', str(m) + ',' + str(stop-start))
+io.writeFile('', 'p6changeslow2.txt', 'changeslow, A [' + Alow + ', ' + Ahigh + ']', 'w')
+io.writeFile('', 'p6changegreedy.txt', 'changegreedy, A [' + Alow + ', ' + Ahigh + ']', 'w')
+io.writeFile('', 'p6changedb.txt', 'changedb, A [' + Alow + ', ' + Ahigh + ']', 'w')
 
-io.writeFile('', 'p6changedb.txt', 'changedb, A [2000, 2200]', 'w')
-for A in range(2000, 2201):
-    V = [1,2,4,6,8,10,12,14,16,18,20,22,24,26,28,30]
+for A in range(Alow, Ahigh):
+    V = [1, 2, 4, 6, 8, 10, 12, 14, 16, 18, 20, 22, 24, 26, 28, 30]
+    start = time.time()
+    C, m = cs325_p2.changeSlow(A, V)
+    stop = time.time()
+    io.writeFile('', 'p6changeslow.txt', str(m) + ',' + str(stop - start))
+    start = time.time()
+    C, m = cs325_p2.changegreedy(A, V)
+    stop = time.time()
+    io.writeFile('', 'p6changegreedy.txt', str(m) + ',' + str(stop - start))
     start = time.time()
     m = cs325_p2.changedp(A, V)
     stop = time.time()
-    io.writeFile('', 'p6changedb.txt', str(m) + ',' + str(stop-start))
+    io.writeFile('', 'p6changedb.txt', str(m) + ',' + str(stop - start))
