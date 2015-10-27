@@ -14,6 +14,8 @@ import math
 import inout
 import time
 import gc
+import sys
+sys.setrecursionlimit(10000)
 
 
 # Testing array
