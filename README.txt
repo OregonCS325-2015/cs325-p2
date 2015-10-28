@@ -8,7 +8,9 @@ CS 325 - Fall 2015
 https://github.com/OregonCS325-2015/cs325-p2
 
 
-To use this file type cs325_p2.py -a <algorithm name (changedp|changegreedy\changeslow)> -i <your test file name>
+To use this file type cs325_p2.py -a <algorithm name (changedp|changegreedy|changeslow)> -i <your test file name>
+
+Example: cs325_p2.py -a changedp -i input.txt
 
 Program automatically outputs yourfilenameChange.txt with the results
 
